@@ -24,7 +24,20 @@
         $(this).removeClass("myenter");
     });
 
-    $('[data-toggle="popover"]').popover({ html: true, container: 'body', title: "Header", content: "<input type=\"text\" name=\"test\" value=\"test\" />", placement: "auto" });
+    $('[data-toggle="popover"]').popover({
+        html: true,
+        container: 'body',
+        title: "Header",
+        content: "<input type=\"text\" name=\"test\" value=\"test\" />",
+        placement: "auto"
+    })
+
+    $('[data-toggle="popover"]').click(function (e) {
+        $('[data-toggle="popover"]').not(this).popover('hide');
+    });
+
+
+   
 });
 
 function initialize(y, m) {
@@ -108,6 +121,10 @@ function f1() {
         $(this).removeClass("myenter");
     });
     $('[data-toggle="popover"]').popover({ html: true, container: 'body', title: "Header", content: "<input type=\"text\" name=\"test\" value=\"test\" />", placement: "auto" });
+    $('[data-toggle="popover"]').click(function (e) {
+        $('[data-toggle="popover"]').not(this).popover('hide');
+    });
+
 }
 function f2() {
     //回下個月
@@ -134,4 +151,8 @@ function f2() {
         $(this).removeClass("myenter");
     });
     $('[data-toggle="popover"]').popover({ html: true, container: 'body', title: "Header", content: "<input type=\"text\" name=\"test\" value=\"test\" />", placement: "auto" });
+    $('[data-toggle="popover"]').click(function (e) {
+        $('[data-toggle="popover"]').not(this).popover('hide');
+    });
+
 }
