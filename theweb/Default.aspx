@@ -64,6 +64,29 @@
                 
             </div>
         </div>
+
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" style="height: 80%;max-height:80%;">
+  <div class="modal-dialog modal-lg" role="document" style="height: 100%;max-height:100%;">
+    <div class="modal-content" style="height: 100%;max-height:100%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">新增事件...</h4>
+      </div>
+      <div class="modal-body" style="height: 80%;max-height:80%;">
+          <textarea id="TextArea1"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <asp:Button ID="Button3" runat="server"  CssClass="btn btn-primary" data-dismiss="modal" UseSubmitBehavior="false" Text="Save changes"  OnClick="a1"/>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
     </form>
     <script>
 

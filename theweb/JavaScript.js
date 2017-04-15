@@ -24,19 +24,12 @@
         $(this).removeClass("myenter");
     });
 
-    $('[data-toggle="popover"]').popover({
-        html: true,
-        container: 'body',
-        title: "Header",
-        content: "<input type=\"text\" name=\"test\" value=\"test\" />",
-        placement: "auto"
-    })
 
-    $('[data-toggle="popover"]').click(function (e) {
-        $('[data-toggle="popover"]').not(this).popover('hide');
+    $('[data-toggle="modal"]').on('click',function(e){
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        }).modal('toggle');
     });
-
-
    
 });
 
@@ -63,7 +56,7 @@ function initialize(y, m) {
                     tt += "<td class=\"myb1\">&nbsp";
                 }
                 else {
-                    tt += '<td class=\"myn1\" data-toggle=\"popover\" >';
+                    tt += '<td class=\"myn1\" data-toggle=\"modal\" >';
                     tt += tj;
                     tj++;
                 }
@@ -81,7 +74,7 @@ function initialize(y, m) {
                     tt += "<td class=\"myb1\">&nbsp";
                 }
                 else {
-                    tt += '<td class=\"myn1\" data-toggle=\"popover\" >';
+                    tt += '<td class=\"myn1\" data-toggle=\"modal\" >';
                     tt += tj;
                 }
                 tj++;
@@ -97,7 +90,6 @@ function initialize(y, m) {
 }
 function f1() {
     //回上個月
-    $("[data-toggle='popover']").popover('destroy');
     var y = $("#Label1").text().split('/')[0];
     var m = $("#Label1").text().split('/')[1];
     if (m - 1 == 0) {
@@ -120,15 +112,15 @@ function f1() {
     $("#mycalendar tr[id!='basic'] td").mouseleave(function () {
         $(this).removeClass("myenter");
     });
-    $('[data-toggle="popover"]').popover({ html: true, container: 'body', title: "Header", content: "<input type=\"text\" name=\"test\" value=\"test\" />", placement: "auto" });
-    $('[data-toggle="popover"]').click(function (e) {
-        $('[data-toggle="popover"]').not(this).popover('hide');
+    $('[data-toggle="modal"]').on('click', function (e) {
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        }).modal('show');
     });
 
 }
 function f2() {
     //回下個月
-    $("[data-toggle='popover']").popover('destroy');
     var y = $("#Label1").text().split('/')[0];
     var m = $("#Label1").text().split('/')[1];
     if (m == 12) {
@@ -150,9 +142,10 @@ function f2() {
     $("#mycalendar tr[id!='basic'] td").mouseleave(function () {
         $(this).removeClass("myenter");
     });
-    $('[data-toggle="popover"]').popover({ html: true, container: 'body', title: "Header", content: "<input type=\"text\" name=\"test\" value=\"test\" />", placement: "auto" });
-    $('[data-toggle="popover"]').click(function (e) {
-        $('[data-toggle="popover"]').not(this).popover('hide');
+    $('[data-toggle="modal"]').on('click', function (e) {
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        }).modal('show');
     });
 
 }

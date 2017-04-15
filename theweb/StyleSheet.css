@@ -79,24 +79,42 @@ table tr td.myenter{
 
 
 
-  /* Popover */
-  .popover {
+
+
+ /*Popover*/ 
+  /*.popover {
       border: 2px dotted red;
-  }
-  /* Popover Header */
-  .popover-title {
+  }*/
+ /*Popover Header*/  
+  /*.popover-title {
       background-color: #73AD21; 
       color: #FFFFFF; 
       font-size: 28px;
       text-align:center;
-  }
-  /* Popover Body */
-  .popover-content {
+  }*/
+ /*Popover Body*/ 
+  /*.popover-content {
       background-color: coral;
       color: black;
       padding: 25px;
-  }
-  /* Popover Arrow */
-  .arrow {
+  }*/
+ /*Popover Arrow*/ 
+  /*.arrow {
       border-right-color: red !important;
-  }
+  }*/
+
+
+
+#TextArea1 {
+    display: inline-block;
+    margin-top: 2%;
+    max-width: 100%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: 0px;
+    height: 100%;
+    max-height:100%;
+    font-size: 30px;
+    resize:none;
+    background-color: lightblue;
+}

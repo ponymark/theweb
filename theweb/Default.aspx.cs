@@ -11,4 +11,8 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+    //寫到資料庫
+    public void a1(object sender, EventArgs e)
+    {
+    }
 }
