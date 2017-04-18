@@ -1,8 +1,4 @@
 ﻿$(document).ready(function () {
-
-
-
-
     var d = new Date();
     var y = d.getFullYear();
     var m = d.getMonth();
@@ -16,22 +12,34 @@
     $("#Button1").click(f1);
     $("#Button2").click(f2);
 
+    modaltest();//就算被包起來 寫在裡面的事件已經被定義了 那就會隨時偵測執行
+});
+
+function modaltest() {
+    var stat = 0;//保護機制 0:可以變灰色 1:不能變灰色
     $("#mycalendar tr[id!='basic'] td").mouseenter(function () {
+        if (stat == 1)//先清除重設之前殘留的其他灰色
+            $("#mycalendar tr[id!='basic'] td").removeClass("myenter");
+        stat = 0;
         $(this).addClass("myenter");
     });
 
     $("#mycalendar tr[id!='basic'] td").mouseleave(function () {
-        $(this).removeClass("myenter");
+        if (stat == 0)//若沒保護 才會變灰色
+            $(this).removeClass("myenter");
     });
 
 
-    $('[data-toggle="modal"]').on('click',function(e){
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        }).modal('toggle');
+    $('[data-toggle="modal"]').on('click', function (e) {
+        stat = 1;//點擊當下開始保護
+        $('#myModal').on('shown.bs.modal', function (e) {
+            var modal = $(this);
+            $('.modal-title').text($("#Label1").text() + '/' + $("#mycalendar tr[id!='basic'] td.myenter").text());
+            $('#HiddenField1').val($('.modal-title').text());
+        }).modal('show');
     });
-   
-});
+}//stat的用法 是想到jquery$() 或著說js 也有硬體語言的非同步性質 這種事件觸發是全面隨時的 各自管理的 沒有流程順序問題  所以加入stat的var用來記憶事件狀態 造成類似等待的效果
+
 
 function initialize(y, m) {
 
@@ -105,18 +113,7 @@ function f1() {
     }
 
 
-    $("#mycalendar tr[id!='basic'] td").mouseenter(function () {
-        $(this).addClass("myenter");
-    });
-
-    $("#mycalendar tr[id!='basic'] td").mouseleave(function () {
-        $(this).removeClass("myenter");
-    });
-    $('[data-toggle="modal"]').on('click', function (e) {
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        }).modal('show');
-    });
+    modaltest();
 
 }
 function f2() {
@@ -135,17 +132,6 @@ function f2() {
         initialize(y, m - 1);
     }
 
-    $("#mycalendar tr[id!='basic'] td").mouseenter(function () {
-        $(this).addClass("myenter");
-    });
-
-    $("#mycalendar tr[id!='basic'] td").mouseleave(function () {
-        $(this).removeClass("myenter");
-    });
-    $('[data-toggle="modal"]').on('click', function (e) {
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus()
-        }).modal('show');
-    });
+    modaltest();
 
 }

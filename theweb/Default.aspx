@@ -33,7 +33,6 @@
         <div style="display: inline-block;height: 100%;
     width:100%;">
         <div class="mybackground">
-            
             <div class="mycenter" >
                 <input id="Button1" type="button" value="上個月" class="btn btn-info btn-block" />
             </div>
@@ -61,7 +60,6 @@
             <div style="display: inline-block; margin-right: -4px; margin-left: auto; width: 1%; height: 100%; background-color: #478978; position: absolute; right: 19%;left:80%">
             </div>
             <div style="display: inline-block; margin-right: -4px; margin-left: auto; width: 19%; height: 100%; background-color: #84dcc6; position: absolute; right: 4px;">
-                
             </div>
         </div>
 
@@ -72,10 +70,10 @@
     <div class="modal-content" style="height: 100%;max-height:100%;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">新增事件...</h4>
+         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body" style="height: 80%;max-height:80%;">
-          <textarea id="TextArea1"></textarea>
+          <textarea id="TextArea1" name="TextArea1"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -86,7 +84,7 @@
 </div><!-- /.modal -->
 
 
-
+        <asp:HiddenField ID="HiddenField1" runat="server" />
     </form>
     <script>
 

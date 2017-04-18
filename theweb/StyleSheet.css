@@ -1,11 +1,10 @@
-﻿html 
+html
 {
     height: 100%;
     width:100%;
 }
-form 
+form
 {
-
      height: 100%;
      width:100%;
      background-color:mediumseagreen;
@@ -49,7 +48,7 @@ margin-right:-4px;    margin-left:0px;
 #basic {
     width: 100%;
     height: 5%;
-    background-color: limegreen;
+    background-color: darkgreen;
     border: none;
     color: white;
     font-size: 30px;
@@ -72,7 +71,7 @@ table tr td.myb1 {
 }
 
 table tr td.myenter{
-    
+
     background-color: #AAAAAA;
 
 }
@@ -81,24 +80,24 @@ table tr td.myenter{
 
 
 
- /*Popover*/ 
+ /*Popover*/
   /*.popover {
       border: 2px dotted red;
   }*/
- /*Popover Header*/  
+ /*Popover Header*/
   /*.popover-title {
-      background-color: #73AD21; 
-      color: #FFFFFF; 
+      background-color: #73AD21;
+      color: #FFFFFF;
       font-size: 28px;
       text-align:center;
   }*/
- /*Popover Body*/ 
+ /*Popover Body*/
   /*.popover-content {
       background-color: coral;
       color: black;
       padding: 25px;
   }*/
- /*Popover Arrow*/ 
+ /*Popover Arrow*/
   /*.arrow {
       border-right-color: red !important;
   }*/
@@ -116,5 +115,5 @@ table tr td.myenter{
     max-height:100%;
     font-size: 30px;
     resize:none;
-    background-color: lightblue;
-}
+    background-color:lightblue;
+}
