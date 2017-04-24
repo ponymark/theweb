@@ -1,20 +1,37 @@
 ﻿$(document).ready(function () {
-    var d = new Date();
-    var y = d.getFullYear();
-    var m = d.getMonth();
-    var dd = d.getDate();
-    var n = d.getDay();
+    if ($('#HiddenField2').val() == "test") {
+        var d = new Date();
+        var y = d.getFullYear();
+        var m = d.getMonth();
+        //var dd = d.getDate();
+        //var n = d.getDay();
 
-    $("#Label1").text(y + '/' + (m + 1));
+        $("#Label1").text(y + '/' + (m + 1));
+        $('#HiddenField2').val(y + '/' + (m + 1));
+        initialize(y, m);
+    }
+    else {
+        var y = $("#HiddenField2").val().split('/')[0];
+        var m = $("#HiddenField2").val().split('/')[1];
 
-    initialize(y, m);
+        $("#Label1").text(y + '/' + m);
+        initialize(y, m-1);//點擊事件發動時 重新建立之前瀏覽的月曆
+    }
+
+
 
     $("#Button1").click(f1);
     $("#Button2").click(f2);
+    $("#Button3").click(function(e){
+        __doPostBack('btnSave', 'Button3');
+        $('form').hide();
+        $('body,html,form').addClass('load');
 
+        window.event.returnValue = false;//ie789
+                    return false;//ie1011
+    });
     modaltest();//就算被包起來 寫在裡面的事件已經被定義了 那就會隨時偵測執行
 });
-
 function modaltest() {
     var stat = 0;//保護機制 0:可以變灰色 1:不能變灰色
     $("#mycalendar tr[id!='basic'] td").mouseenter(function () {
@@ -39,8 +56,6 @@ function modaltest() {
         }).modal('show');
     });
 }//stat的用法 是想到jquery$() 或著說js 也有硬體語言的非同步性質 這種事件觸發是全面隨時的 各自管理的 沒有流程順序問題  所以加入stat的var用來記憶事件狀態 造成類似等待的效果
-
-
 function initialize(y, m) {
 
     var td = new Date(y, m, 1);//2017-0-1=>2017-1-1
@@ -94,7 +109,12 @@ function initialize(y, m) {
 
         wk++;
     }
-
+    if(wk==5){
+        $("tr[id!='basic']").addClass('w5');
+    }
+    else {
+        $("tr[id!='basic']").addClass('w6');
+    }
 }
 function f1() {
     //回上個月
@@ -103,13 +123,15 @@ function f1() {
     if (m - 1 == 0) {
         m = 12;
         $("#Label1").text(--y + '/' + m);
+        $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m - 1);
+        initialize(y, m-1);//重新建立上個月的月曆
     }
     else {
         $("#Label1").text(y + '/' + --m);
+        $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m - 1);
+        initialize(y, m-1);
     }
 
 
@@ -123,13 +145,15 @@ function f2() {
     if (m == 12) {
         m = 1;
         $("#Label1").text(++y + '/' + m);
+        $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m - 1);
+        initialize(y, m-1);
     }
     else {
         $("#Label1").text(y + '/' + ++m);
+        $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m - 1);
+        initialize(y, m-1);
     }
 
     modaltest();

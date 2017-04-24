@@ -30,21 +30,43 @@
 <body style="height: 100%; width: 100%;">
     <script src="JavaScript.js"></script>
     <form id="form1" runat="server">
-        <div style="display: inline-block;height: 100%;
-    width:100%;">
-        <div class="mybackground">
-            <div class="mycenter" >
+
+        <div style="height: 9%;
+    width:100%;background-color:#84dcc6;position: absolute; top: 0%;bottom:91%;"></div>
+
+        <div style="height: 1%;
+    width:9%;background-color:#84dcc6;position: absolute; top: 9%;bottom:90%;left: 0%;right:91%"></div>
+        <div style="height: 1%;
+    width:82%;background-color:#478978;position: absolute; top: 9%;bottom:90%;left: 9%;right:9%"></div>
+        <div style="height: 1%;
+    width:9%;background-color:#84dcc6;position: absolute; top: 9%;bottom:90%;left: 91%;right:0%"></div>
+
+
+
+        <div id="theall" style="height: 80%;
+    width:100%;position: absolute;top: 10%;bottom:10%">
+            <div style="display: inline-block;  width: 9%; height: 100%; background-color: #84dcc6; position: absolute; left: 0%;">
+            </div>
+            <div style="display: inline-block;  width: 1%; height: 100%; background-color: #478978; position: absolute; left: 9%;right:90%">
+            </div>
+
+
+
+        <div class="mybackground" >
+            <div style="width:100%;height:12%; display:inline-block;text-align:center;position: absolute;top: 0%;bottom:88%"></div>
+            <div style="width:100%;height:88%; display:inline-block;position: absolute;top: 12%;bottom:0%">
+            <div class="mycenter" style="display:inline-block;position: absolute;left: 0%;right:66%;top: 0%;bottom:90%;">
                 <input id="Button1" type="button" value="上個月" class="btn btn-info btn-block" />
             </div>
-            <div class="mycenter" >
+            <div class="mycenter" style="display:inline-block;position: absolute;left: 33%;right:33%;top: 0%;bottom:90%;">
                 <p id="Label1"></p>
             </div>
-            <div class="mycenter"  >
+            <div class="mycenter" style="display:inline-block;position: absolute;left: 66%;right:0%;top: 0%;bottom:90%;" >
                 <input id="Button2" type="button" value="下個月" class="btn btn-info btn-block" />
             </div>
 
-            <div style="display:inline-block; width:100%">
-            <table id="mycalendar" class="table table-bordered">
+            <div id="myoutside"style="display:inline-block; width:100%;height:90%; position: absolute;top: 10%;bottom:0%;right:0%;left:0%; ">
+            <table id="mycalendar" class="table table-bordered table-responsive">
                 <tr id="basic">
                     <td>星期日</td>
                     <td>星期一</td>
@@ -54,37 +76,52 @@
                     <td>星期五</td>
                     <td>星期六</td>
                 </tr>
+
             </table>
                 </div>
-        </div>
-            <div style="display: inline-block; margin-right: -4px; margin-left: auto; width: 1%; height: 100%; background-color: #478978; position: absolute; right: 19%;left:80%">
-            </div>
-            <div style="display: inline-block; margin-right: -4px; margin-left: auto; width: 19%; height: 100%; background-color: #84dcc6; position: absolute; right: 4px;">
+
             </div>
         </div>
 
+
+
+            <div style="display: inline-block;   width: 1%; height: 100%; background-color: #478978; position: absolute; right: 9%;left:90%">
+            </div>
+            <div style="display: inline-block;  width: 9%; height: 100%; background-color: #84dcc6; position: absolute; right:0%;">
+            </div>
+        </div>
+                <div style="height: 1%;
+    width:9%;background-color:#84dcc6;position: absolute; top: 89%;bottom:10%;left: 0%;right:91%"></div>
+        <div style="height: 1%;
+    width:82%;background-color:#478978;position: absolute; top: 89%;bottom:10%;left: 9%;right:9%"></div>
+        <div style="height: 1%;
+    width:9%;background-color:#84dcc6;position: absolute; top: 89%;bottom:10%;left: 91%;right:0%"></div>
+
+        <div style="height: 9%;
+    width:100%;background-color:#84dcc6;position: absolute; top: 91%;bottom:0%"></div>
 
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" style="height: 80%;max-height:80%;">
-  <div class="modal-dialog modal-lg" role="document" style="height: 100%;max-height:100%;">
+  <div class="modal-dialog modal-lg modal-sm" role="document" style="height: 100%;max-height:100%;">
     <div class="modal-content" style="height: 100%;max-height:100%;">
-      <div class="modal-header">
+      <div class="modal-header"  style="height: 10%;max-height:10%;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
          <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body" style="height: 80%;max-height:80%;">
           <textarea id="TextArea1" name="TextArea1"></textarea>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer"  style="height: 10%;max-height:10%;">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <asp:Button ID="Button3" runat="server"  CssClass="btn btn-primary" data-dismiss="modal" UseSubmitBehavior="false" Text="Save changes"  OnClick="a1"/>
+        <asp:Button ID="Button3" runat="server"  CssClass="btn btn-primary" data-dismiss="modal" AutoPostBack="True" UseSubmitBehavior="false" Text="Save changes"  OnClick="Page_Load"/>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
-        <asp:HiddenField ID="HiddenField1" runat="server" />
+        <asp:HiddenField ID="HiddenField1" runat="server"/><!-- 用來暫存當前年月，為了傳給後端年月 -->
+        <asp:HiddenField ID="HiddenField2" runat="server" Value="test"/><!-- 用來暫存當前年月，為了後端事件刷新時能重新建立月曆 -->
     </form>
     <script>
 
