@@ -15,7 +15,7 @@
         var m = $("#HiddenField2").val().split('/')[1];
 
         $("#Label1").text(y + '/' + m);
-        initialize(y, m-1);//點擊事件發動時 重新建立之前瀏覽的月曆
+        initialize(y, m - 1);//點擊事件發動時 重新建立之前瀏覽的月曆
     }
 
 
@@ -31,6 +31,11 @@
                     return false;//ie1011
     });
     modaltest();//就算被包起來 寫在裡面的事件已經被定義了 那就會隨時偵測執行
+
+
+
+
+
 });
 function modaltest() {
     var stat = 0;//保護機制 0:可以變灰色 1:不能變灰色
@@ -65,7 +70,6 @@ function initialize(y, m) {
     var wk = 0;
 
     var ff = new Date(y, m + 1, 0).getDate();//2017-1-0=>2017-1=>31
-
     while (tj <= ff) {
 
 
@@ -79,11 +83,11 @@ function initialize(y, m) {
                     tt += "<td class=\"myb1\">&nbsp";
                 }
                 else {
-                    tt += '<td class=\"myn1\" data-toggle=\"modal\" >';
+                    tt += '<td class=\"myn1\" id=\"date'+tj+'\" data-toggle=\"modal\" >';
                     tt += tj;
                     tj++;
                 }
-                tt += '</td>';
+                tt += '</td> ';//同下
             }
 
             $('#mycalendar tr:last').after('<tr id=\"' + "wk" + wk + '\">' + tt + '</tr>');
@@ -97,11 +101,11 @@ function initialize(y, m) {
                     tt += "<td class=\"myb1\">&nbsp";
                 }
                 else {
-                    tt += '<td class=\"myn1\" data-toggle=\"modal\" >';
+                    tt += '<td class=\"myn1\" id=\"date' + tj + '\" data-toggle=\"modal\" >';
                     tt += tj;
                 }
                 tj++;
-                tt += '</td>';
+                tt += '</td> ';//留下空白間距
             }
 
             $('#mycalendar tr:last').after('<tr id=\"'+"wk"+wk+'\">' + tt + '</tr>');
@@ -115,6 +119,31 @@ function initialize(y, m) {
     else {
         $("tr[id!='basic']").addClass('w6');
     }
+
+    $.post("Handler.ashx",
+    {
+        year: y,
+        month: m + 1
+    },
+    function (data, status) {
+
+        if(data=="什麼都沒有"){
+            $("#label2").text("Data: " + data + " Status: " + status);
+    }
+        else {
+            $("#label2").text("Data: " + "已經匯入!" + " Status: " + status);
+    var dd = data.split('\n');
+    for (var gg = 0; gg < dd.length; gg++) {
+        if (dd[gg] != "" && dd[gg] != null) {
+            $("td[id='date" + dd[gg].split('\t')[2].split('/')[2] + "']")
+                .text(dd[gg].split('\t')[1] + '\t')
+                .css("font-size", "0.5vw !important")
+                .css("background-color", "pink");
+        }}
+        }
+    });//繪製到行事曆上
+
+
 }
 function f1() {
     //回上個月
@@ -125,18 +154,17 @@ function f1() {
         $("#Label1").text(--y + '/' + m);
         $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m-1);//重新建立上個月的月曆
+        initialize(y, m - 1);//重新建立上個月的月曆
     }
     else {
         $("#Label1").text(y + '/' + --m);
         $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m-1);
+        initialize(y, m - 1);
     }
 
 
     modaltest();
-
 }
 function f2() {
     //回下個月
@@ -147,15 +175,14 @@ function f2() {
         $("#Label1").text(++y + '/' + m);
         $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m-1);
+        initialize(y, m - 1);
     }
     else {
         $("#Label1").text(y + '/' + ++m);
         $("#HiddenField2").val(y + '/' + m);
         $("#mycalendar tr[id!='basic']").closest("tr").remove();
-        initialize(y, m-1);
+        initialize(y, m - 1);
     }
 
     modaltest();
-
 }

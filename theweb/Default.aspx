@@ -53,7 +53,7 @@
 
 
         <div class="mybackground" >
-            <div style="width:100%;height:12%; display:inline-block;text-align:center;position: absolute;top: 0%;bottom:88%"></div>
+            <div style="width:100%;height:12%; display:inline-block;text-align:center;position: absolute;top: 0%;bottom:88%"><p id="label2" style="font-size:3vw;color:white;padding: 20px 0"></p></div>
             <div style="width:100%;height:88%; display:inline-block;position: absolute;top: 12%;bottom:0%">
             <div class="mycenter" style="display:inline-block;position: absolute;left: 0%;right:66%;top: 0%;bottom:90%;">
                 <input id="Button1" type="button" value="上個月" class="btn btn-info btn-block" />
@@ -68,18 +68,10 @@
             <div id="myoutside"style="display:inline-block; width:100%;height:90%; position: absolute;top: 10%;bottom:0%;right:0%;left:0%; ">
             <table id="mycalendar" class="table table-bordered table-responsive">
                 <tr id="basic">
-                    <td>星期日</td>
-                    <td>星期一</td>
-                    <td>星期二</td>
-                    <td>星期三</td>
-                    <td>星期四</td>
-                    <td>星期五</td>
-                    <td>星期六</td>
+                    <td>日</td> <td>一</td> <td>二</td> <td>三</td> <td>四</td> <td>五</td> <td>六</td>
                 </tr>
-
             </table>
                 </div>
-
             </div>
         </div>
 
@@ -101,7 +93,7 @@
     width:100%;background-color:#84dcc6;position: absolute; top: 91%;bottom:0%"></div>
 
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" style="height: 80%;max-height:80%;">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" >
   <div class="modal-dialog modal-lg modal-sm" role="document" style="height: 100%;max-height:100%;">
     <div class="modal-content" style="height: 100%;max-height:100%;">
       <div class="modal-header"  style="height: 10%;max-height:10%;">

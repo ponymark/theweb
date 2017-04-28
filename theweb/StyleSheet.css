@@ -43,18 +43,20 @@ form
 
 
 
-table tr{
+tr{
   display:inline-block;
-  position:relative; left: 0%;right:0%;top: 0%;
+  position:relative; 
      width: 100%;
-     height:calc(90%/5);
 }
 
-table tr td{  display:inline-block;
+td{  display:inline-block;
     width: calc(100%/7);
       font-size: 30px;
     text-align:center;
     height: 100%;
+         margin-right: -4px;
+         position:relative;
+         
 }
 #basic{
   height:10%;
@@ -62,7 +64,6 @@ table tr td{  display:inline-block;
 
 #basic td{
     background-color: darkgreen;
-    margin-right: -4px;
     color: white;
 }
 
@@ -79,8 +80,6 @@ table tr td.myn1 {
     background-color:#DDDDDD;
     border-color:white ;
     color:black;
-    font-size:30px;
-    text-align:center;
 }
 
 table tr td.myb1 {
@@ -90,7 +89,7 @@ table tr td.myb1 {
 
 table tr td.myenter{
 
-    background-color: #AAAAAA;
+    background-color: #AAAAAA !important;
 
 }
 
